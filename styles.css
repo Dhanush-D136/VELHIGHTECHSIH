@@ -689,9 +689,9 @@ body.state-completed .status-dot {
   font-size: clamp(2.4rem, 5vw, 4.2rem);
   font-weight: 900;
   color: #00F2FE;
-  opacity: 0.95;
-  text-shadow: 0 0 20px #00F2FE, 0 0 40px #EC4899;
-  animation: colonBlink 1.2s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
+  opacity: 0.9;
+  text-shadow: 0 0 18px rgba(0, 242, 254, 0.8), 0 0 35px rgba(121, 40, 202, 0.5);
+  animation: softColonPulse 2s ease-in-out infinite alternate;
   display: flex !important;
   align-items: center;
   justify-content: center;
@@ -699,12 +699,12 @@ body.state-completed .status-dot {
   flex: 0 0 auto;
 }
 
-@keyframes colonBlink {
-  0% { opacity: 0.4; text-shadow: 0 0 10px #00F2FE; transform: scale(0.94); }
-  100% { opacity: 1; text-shadow: 0 0 30px #00F2FE, 0 0 50px #EC4899, 0 0 15px #FFFFFF; transform: scale(1.08); }
+@keyframes softColonPulse {
+  0% { opacity: 0.6; text-shadow: 0 0 12px rgba(0, 242, 254, 0.6); transform: scale(0.97); }
+  100% { opacity: 1; text-shadow: 0 0 28px rgba(0, 242, 254, 0.9), 0 0 45px rgba(255, 0, 128, 0.5); transform: scale(1.04); }
 }
 
-/* 3D Animated Horizontal Glass Timer Card */
+/* 3D Animated Horizontal Glass Timer Card - Unified System */
 .timer-card {
   position: relative;
   flex: 1 1 0;
@@ -720,7 +720,7 @@ body.state-completed .status-dot {
   overflow: hidden;
 }
 
-/* Conic Animated Multi-Color Border Sweep */
+/* Synchronized Conic Multi-Color Border Sweep */
 .card-border-sweep {
   position: absolute;
   top: -50%;
@@ -730,15 +730,15 @@ body.state-completed .status-dot {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    #00f2fe 30deg,
-    #ec4899 75deg,
-    #ffd700 120deg,
-    #8b5cf6 165deg,
+    rgba(0, 242, 254, 0.8) 35deg,
+    rgba(59, 130, 246, 0.7) 75deg,
+    rgba(121, 40, 202, 0.7) 120deg,
+    rgba(255, 0, 128, 0.8) 165deg,
     transparent 240deg
   );
-  animation: cardBorderRotate 5s linear infinite;
+  animation: cardBorderRotate 7s linear infinite;
   pointer-events: none;
-  opacity: 0.95;
+  opacity: 0.85;
   z-index: 0;
 }
 
@@ -749,21 +749,22 @@ body.state-completed .status-dot {
 
 .card-glass-bg {
   position: absolute;
-  inset: 2px;
+  inset: 1.5px;
   border-radius: 18px;
   background: linear-gradient(
     135deg,
-    rgba(10, 18, 42, 0.90) 0%,
-    rgba(18, 30, 68, 0.82) 50%,
+    rgba(10, 18, 42, 0.92) 0%,
+    rgba(18, 28, 60, 0.84) 50%,
     rgba(8, 14, 32, 0.94) 100%
   );
-  border: 1.5px solid rgba(0, 242, 254, 0.45);
+  border: 1px solid rgba(0, 242, 254, 0.35);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   box-shadow: 
-    0 12px 35px rgba(0, 0, 0, 0.75),
-    inset 0 1px 2px rgba(255, 255, 255, 0.25),
-    0 0 25px rgba(0, 242, 254, 0.22);
+    0 12px 35px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.2),
+    inset 0 -1px 1px rgba(0, 242, 254, 0.15),
+    0 0 20px rgba(0, 242, 254, 0.18);
   z-index: 1;
   transition: var(--transition-smooth);
 }
@@ -772,32 +773,18 @@ body.state-completed .status-dot {
   position: absolute;
   inset: -3px;
   border-radius: 22px;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.5) 0%, rgba(236, 72, 153, 0.4) 45%, rgba(121, 40, 202, 0.35) 75%, transparent 90%);
-  opacity: 0.65;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.45) 0%, rgba(59, 130, 246, 0.35) 30%, rgba(121, 40, 202, 0.3) 60%, rgba(255, 0, 128, 0.25) 85%, transparent 100%);
+  opacity: 0.7;
   z-index: 0;
   filter: blur(18px);
-  animation: cardEnergyPulse 4s ease-in-out infinite alternate;
+  animation: synchronizedAmbientGlow 8s ease-in-out infinite alternate;
   transition: var(--transition-smooth);
 }
 
-@keyframes cardEnergyPulse {
-  0% { opacity: 0.5; filter: blur(14px); }
-  100% { opacity: 0.95; filter: blur(22px); }
-}
-
-/* Active Seconds Ticking Animation */
-.timer-card-active .card-glass-bg {
-  border-color: rgba(0, 242, 254, 0.75);
-  animation: tickCardRhythm 1s ease-in-out infinite alternate;
-}
-
-@keyframes tickCardRhythm {
-  0% {
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.22), 0 0 20px rgba(0, 242, 254, 0.25);
-  }
-  100% {
-    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85), inset 0 1px 3px rgba(255, 255, 255, 0.45), 0 0 35px rgba(0, 242, 254, 0.45), 0 0 20px rgba(236, 72, 153, 0.3);
-  }
+@keyframes synchronizedAmbientGlow {
+  0% { opacity: 0.55; filter: blur(15px); }
+  50% { opacity: 0.85; filter: blur(22px); }
+  100% { opacity: 0.6; filter: blur(17px); }
 }
 
 .timer-card:hover {
@@ -806,8 +793,8 @@ body.state-completed .status-dot {
 
 .timer-card:hover .card-glass-bg {
   background: linear-gradient(135deg, rgba(16, 28, 64, 0.94) 0%, rgba(28, 44, 94, 0.88) 50%, rgba(12, 22, 48, 0.96) 100%);
-  border-color: rgba(0, 242, 254, 0.85);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 45px rgba(0, 242, 254, 0.5);
+  border-color: rgba(0, 242, 254, 0.8);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 242, 254, 0.4);
 }
 
 .timer-card:hover .card-glow {
@@ -839,23 +826,30 @@ body.state-completed .status-dot {
   font-size: clamp(2.8rem, 5.5vw, 4.8rem);
   font-weight: 900;
   line-height: 1;
-  color: #ffffff;
   letter-spacing: -0.02em;
-  text-shadow: 
-    0 0 25px rgba(0, 242, 254, 0.75), 
-    0 0 50px rgba(139, 92, 246, 0.45), 
-    0 5px 15px rgba(0, 0, 0, 0.9);
+  background: linear-gradient(135deg, #ffffff 0%, #00f2fe 30%, #3b82f6 55%, #7928ca 80%, #ff0080 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: digitGradientFlow 10s ease infinite;
+  filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.65)) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9));
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Dynamic Digit Flip Animation */
-.digit-tick {
-  animation: tickFlip 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+@keyframes digitGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@keyframes tickFlip {
-  0% { transform: translateY(-35%) scale(0.85); opacity: 0.2; }
-  50% { transform: translateY(8%) scale(1.1); opacity: 1; text-shadow: 0 0 40px var(--accent-cyan), 0 0 15px #ffffff; }
+/* Refined 320ms Digit Tick Animation */
+.digit-tick {
+  animation: refinedDigitTick 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes refinedDigitTick {
+  0% { transform: translateY(-8px) scale(0.96); opacity: 0.4; }
+  50% { transform: translateY(2px) scale(1.03); opacity: 1; filter: drop-shadow(0 0 30px rgba(0, 242, 254, 0.9)); }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
@@ -864,17 +858,13 @@ body.state-completed .status-dot {
   font-size: clamp(0.7rem, 1.2vw, 0.85rem);
   font-weight: 800;
   letter-spacing: 0.24em;
-  color: var(--accent-cyan);
+  color: #00F2FE;
   text-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
   padding: 0.15rem 0.55rem;
   border-radius: 6px;
   background: rgba(0, 242, 254, 0.08);
   border: 1px solid rgba(0, 242, 254, 0.25);
-}
-
-.timer-card-active .timer-label {
-  color: var(--accent-cyan);
-  text-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+  transition: all 0.3s ease;
 }
 
 /* 12. PROGRESS BAR */
