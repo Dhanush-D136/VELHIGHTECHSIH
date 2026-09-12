@@ -264,6 +264,7 @@
   }
 
   function playVictoryFanfare() {
+    playStartSong();
     if (isMuted) return;
     const ctx = getAudioContext();
     if (!ctx) return;

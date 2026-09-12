@@ -296,6 +296,54 @@
     </div>
   </div>
 
+  <!-- Edit & Adjust Countdown Time Modal -->
+  <div id="editTimeModal" class="admin-modal-overlay hidden">
+    <div class="admin-modal-card edit-time-modal-card">
+      <div class="modal-header">
+        <i class="fa-solid fa-clock-rotate-left modal-icon-accent"></i>
+        <h3>Edit & Adjust Countdown</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-subtitle">Modify remaining time or add specific time to the countdown.</p>
+        
+        <!-- Direct Time Input Form -->
+        <div class="timer-inputs-wrapper">
+          <div class="timer-input-group">
+            <label for="editModalHours">HOURS</label>
+            <input type="number" id="editModalHours" min="0" max="99" value="24" class="time-num-input">
+          </div>
+          <span class="time-colon">:</span>
+          <div class="timer-input-group">
+            <label for="editModalMinutes">MINUTES</label>
+            <input type="number" id="editModalMinutes" min="0" max="59" value="00" class="time-num-input">
+          </div>
+          <span class="time-colon">:</span>
+          <div class="timer-input-group">
+            <label for="editModalSeconds">SECONDS</label>
+            <input type="number" id="editModalSeconds" min="0" max="59" value="00" class="time-num-input">
+          </div>
+        </div>
+
+        <!-- Quick Add / Preset Time Buttons -->
+        <div class="quick-add-section">
+          <span class="quick-add-label"><i class="fa-solid fa-plus"></i> Quick Add Time:</span>
+          <div class="quick-add-pills">
+            <button type="button" class="quick-add-pill" data-add-mins="5">+5 Mins</button>
+            <button type="button" class="quick-add-pill" data-add-mins="15">+15 Mins</button>
+            <button type="button" class="quick-add-pill" data-add-mins="30">+30 Mins</button>
+            <button type="button" class="quick-add-pill" data-add-mins="60">+1 Hour</button>
+            <button type="button" class="quick-add-pill quick-add-pill-sub" data-add-mins="-10">-10 Mins</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer flex-wrap-gap">
+        <button id="cancelEditModalBtn" class="admin-btn admin-btn-subtle">CANCEL</button>
+        <button id="resetModalDefaultBtn" class="admin-btn admin-btn-warning"><i class="fa-solid fa-rotate-left"></i> RESET 24H</button>
+        <button id="applyEditModalBtn" class="admin-btn admin-btn-primary"><i class="fa-solid fa-play"></i> APPLY & CONTINUE</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Frontend Reset Confirmation Modal -->
   <div id="resetConfirmModal" class="admin-modal-overlay hidden">
     <div class="admin-modal-card">
@@ -313,15 +361,40 @@
     </div>
   </div>
 
-  <!-- Live Current Date & Time Indicator + Small Reset Control (Bottom-Right) -->
+  <!-- Live Current Date & Time Indicator + Single Collapsible Control Symbol (Bottom-Right) -->
   <div class="bottom-right-container">
     <div id="liveClockWidget" class="live-clock-widget">
       <i class="fa-regular fa-clock clock-icon"></i>
       <span id="liveClockText">09 Sep 2026 • 05:39 PM</span>
     </div>
-    <button id="bottomResetBtn" class="bottom-reset-btn hidden" title="RESET COUNTDOWN" aria-label="Reset Countdown">
-      <i class="fa-solid fa-rotate-left"></i>
-    </button>
+
+    <!-- Single Floating Control Toggle & Popover Menu -->
+    <div class="bottom-control-wrapper" id="bottomControlWrapper">
+      
+      <!-- Collapsible Options Menu (Hidden by default) -->
+      <div class="bottom-menu-popover hidden" id="bottomMenuPopover">
+        <button id="pauseResumeBtn" class="menu-action-btn menu-action-amber" title="Pause or Continue Countdown" aria-label="Pause or Continue Countdown">
+          <i class="fa-solid fa-pause" id="pauseResumeIcon"></i>
+          <span id="pauseResumeText">PAUSE</span>
+        </button>
+
+        <button id="openEditModalBtn" class="menu-action-btn menu-action-cyan" title="Edit Countdown Time" aria-label="Edit Time">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span>EDIT TIME</span>
+        </button>
+
+        <button id="bottomResetBtn" class="menu-action-btn menu-action-danger" title="Reset Countdown" aria-label="Reset Countdown">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>RESET</span>
+        </button>
+      </div>
+
+      <!-- Single Small Semi-Transparent Symbol Icon Button -->
+      <button id="controlToggleBtn" class="control-symbol-btn hidden" title="Countdown Controls" aria-label="Toggle Controls Menu">
+        <i class="fa-solid fa-sliders" id="controlToggleIcon"></i>
+      </button>
+
+    </div>
   </div>
 
   <!-- Modular Scripts -->
